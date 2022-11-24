@@ -5,6 +5,8 @@ import { Platform } from 'react-native';
 
 import { New } from '../screams/New';
 import { Pools } from '../screams/Pools';
+import { Find } from '../screams/Find';
+
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -32,18 +34,26 @@ export function AppRoutes(){
             <Screen 
                 name='new'
                 component={New}
-                options={
-                    {tabBarIcon: ( {color} ) => <PlusCircle color={color} size={size}/>}
-                }
+                options={{
+                    tabBarIcon: ( {color} ) => <PlusCircle color={color} size={size} />,
+                    tabBarLabel: 'Novo Bolão'
+                }}
             />
 
             <Screen 
                 name='pools'
                 component={Pools}
-                options={
-                    {tabBarIcon: ( {color} ) => <SoccerBall color={color} size={size}/>}
-                }
-            />            
+                options={{
+                    tabBarIcon: ( {color} ) => <SoccerBall color={color} size={size} />,
+                    tabBarLabel: 'Meus Bolões'
+                }}
+            />    
+
+            <Screen 
+                name='find'
+                component={Find}
+                options={{ tabBarButton: () => null  }}
+            />           
         </Navigator>
     );
 }
