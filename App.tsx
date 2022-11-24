@@ -2,8 +2,8 @@ import { NativeBaseProvider, StatusBar } from 'native-base';
 import { useFonts, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto'
 
 import { AuthContextProvider } from './src/contexts/AuthContext';
-import { Signin } from './src/screams/Signin';
-//import {Pools} from './src/screams/Pools';
+
+import { Routes } from './src/routes';
 import { Loading } from './src/components/Loading';
 
 
@@ -21,7 +21,7 @@ export default function App() {
           translucent
         />
 
-        {fontsLoaded ? <Signin /> : <Loading />}
+        {fontsLoaded ? <Routes /> : <Loading />}
       </AuthContextProvider>
     </NativeBaseProvider>
   );
