@@ -5,9 +5,10 @@ import { useAuth }  from '../hooks/useAuth';
 import Logo from '../assets/logo.svg';
 
 import { Button } from '../components/Button';
+import { color } from 'native-base/lib/typescript/theme/styled-system';
 
-export function Signin() {
-    const { signIn, user } = useAuth();
+export function SignIn() {
+    const { signIn, isUserLoading } = useAuth();
   
     
     return(
@@ -20,6 +21,8 @@ export function Signin() {
                 type="SECONDARY"
                 mt={12}
                 onPress={signIn}
+                isLoading={isUserLoading}
+                _loading={ { _spinner: { color: 'white' } } }
             />   
             <Text color="white" textAlign="center" mt={4} fontSize="12">
                 Não utilizamos nenhuma informação além {'\n'}
