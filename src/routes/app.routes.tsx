@@ -6,7 +6,7 @@ import { Platform } from 'react-native';
 import { New } from '../screams/New';
 import { Pools } from '../screams/Pools';
 import { Find } from '../screams/Find';
-
+import { Details } from '../screams/Details';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -52,6 +52,12 @@ export function AppRoutes(){
             <Screen 
                 name='find'
                 component={Find}
+                options={{ tabBarButton: () => null  }}
+            />       
+
+            <Screen 
+                name='details'
+                component={Details}
                 options={{ tabBarButton: () => null  }}
             />           
         </Navigator>
