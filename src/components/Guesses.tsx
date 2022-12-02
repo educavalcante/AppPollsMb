@@ -18,40 +18,6 @@ export function Guesses({ poolId }: Props) {
 
   const toast = useToast();
 //criar o palpite
-  async function handleGuessConfirm(gameId: string) {
-    try {
-        if (!firstTeamPoints.trim() || !secondTeamPoints){
-          return toast.show({
-            title: 'Informe o placar completo',
-            placement: 'top',
-            bgColor: 'red.500'
-        }); 
-        }
-        console.log(poolId)
-        console.log(gameId)
-        await api.post(`/pools/${poolId}/games/${gameId}/guesses`, {
-          firstTeamPoints: Number(firstTeamPoints),
-          setSecondTeamPoints: Number(setSecondTeamPoints),
-        })
-      
-        toast.show({
-          title: 'Palpite realizado com sucesso',
-          placement: 'top',
-          bgColor: 'green.500'
-      });  
-
-      fetchGames();
-
-    } catch (error) {
-        console.log(error);
-
-        toast.show({
-            title: 'Não foi possível carregar o palpite',
-            placement: 'top',
-            bgColor: 'red.500'
-        });  
-    }
-}
 
   async function fetchGames() {
     try {
@@ -74,6 +40,42 @@ export function Guesses({ poolId }: Props) {
     
   }
 
+  async function handleGuessConfirm(gameId: string) {
+    try {
+        if (!firstTeamPoints.trim() || !secondTeamPoints){
+          return toast.show({
+            title: 'Informe o placar completo',
+            placement: 'top',
+            bgColor: 'red.500'
+        }); 
+        }
+        console.log(poolId)
+        console.log(gameId)
+        await api.post(`/pools/${poolId}/games/${gameId}/guesses`, {
+          firstTeamPoints: Number(firstTeamPoints),
+          SecondTeamPoints: Number(secondTeamPoints),
+        })
+      
+        toast.show({
+          title: 'Palpite realizado com sucesso',
+          placement: 'top',
+          bgColor: 'green.500'
+      });  
+
+      fetchGames();
+
+    } catch (error) {
+        console.log(error);
+
+        toast.show({
+            title: 'Não foi possível carregar o palpite',
+            placement: 'top',
+            bgColor: 'red.500'
+        });  
+    }
+}
+
+
   useEffect(()=> {
     fetchGames();
   }, [poolId]);
@@ -94,6 +96,7 @@ export function Guesses({ poolId }: Props) {
           onGuessConfirm={() => handleGuessConfirm(item.id)}
         />
       )}
+      _contentContainerStyle={{pb: 10}}
     />
   );
 }
