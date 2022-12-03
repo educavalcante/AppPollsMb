@@ -53,7 +53,7 @@ export function Guesses({ poolId }: Props) {
         console.log(gameId)
         await api.post(`/pools/${poolId}/games/${gameId}/guesses`, {
           firstTeamPoints: Number(firstTeamPoints),
-          SecondTeamPoints: Number(secondTeamPoints),
+          secondTeamPoints: Number(secondTeamPoints),
         })
       
         toast.show({
@@ -67,8 +67,11 @@ export function Guesses({ poolId }: Props) {
     } catch (error) {
         console.log(error);
 
+        console.log(firstTeamPoints)
+        console.log(secondTeamPoints)
+
         toast.show({
-            title: 'Não foi possível carregar o palpite',
+            title: 'Não foi possível enviar o palpite',
             placement: 'top',
             bgColor: 'red.500'
         });  
@@ -96,7 +99,7 @@ export function Guesses({ poolId }: Props) {
           onGuessConfirm={() => handleGuessConfirm(item.id)}
         />
       )}
-      _contentContainerStyle={{pb: 10}}
+      _contentContainerStyle={{ pb: 10 }}
     />
   );
 }

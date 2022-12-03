@@ -24,8 +24,6 @@ export function Details() {
 
     const route = useRoute();
     const toast = useToast();
-    //enviar palpite
-
     const { id } = route.params as RouteParams;
     //buscar os dados numa funcao async
     async function fetchPoolDetails() {
